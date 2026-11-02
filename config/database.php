@@ -8,9 +8,17 @@ if (!defined('IN_APP') && !defined('IN_INSTALLER')) {
     define('IN_APP', true);
 }
 
-// Redirect ke installer jika aplikasi belum diinstall
+// Redirect ke installer HANYA jika aplikasi benar-benar belum diinstall
 $baseDir = dirname(__DIR__);
-if (!file_exists($baseDir . '/config/.installed') && !defined('IN_INSTALLER')) {
+$installedLock = $baseDir . '/config/.installed';
+$dbLocal = $baseDir . '/config/db_local.php';
+
+// Jika db_local.php ada tapi .installed belum terbuat (misal karena permission saat install), auto-touch .installed
+if (!file_exists($installedLock) && file_exists($dbLocal)) {
+    @file_put_contents($installedLock, date('Y-m-d H:i:s'));
+}
+
+if (!file_exists($installedLock) && !file_exists($dbLocal) && !defined('IN_INSTALLER')) {
     header("Location: install.php");
     exit;
 }

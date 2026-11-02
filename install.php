@@ -63,13 +63,14 @@ $successMsg = '';
 $step = isset($_GET['step']) ? (int)$_GET['step'] : 1;
 
 // 1. Requirement checks
+$configWritable = is_writable($baseDir . '/config') || @chmod($baseDir . '/config', 0775) && is_writable($baseDir . '/config');
 $reqs = [
     'PHP Version >= 7.4 (Rekomendasi 8.0 - 8.3)' => version_compare(PHP_VERSION, '7.4.0', '>='),
     'Ekstensi MySQLi (Database Driver)'            => extension_loaded('mysqli'),
     'Ekstensi cURL (Komunikasi HTTP)'              => extension_loaded('curl'),
     'Ekstensi JSON (Serialisasi Data)'             => extension_loaded('json'),
     'Ekstensi Sockets (RouterOS API Binary)'       => extension_loaded('sockets'),
-    'Direktori config/ dapat ditulis (Writable)'   => is_writable($baseDir . '/config') || is_writable($baseDir),
+    'Direktori config/ dapat ditulis (Writable)'   => $configWritable,
 ];
 $allReqPassed = !in_array(false, $reqs, true);
 
@@ -264,13 +265,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     . "define('DB_PORT', " . (int)$dbPort . ");\n"
                     . "define('DB_CHARSET', 'utf8mb4');\n";
 
-                file_put_contents($configFile, $dbConfigContent);
+                @chmod($baseDir . '/config', 0777);
+                $w1 = @file_put_contents($configFile, $dbConfigContent);
+                $w2 = @file_put_contents($lockFile, date('Y-m-d H:i:s'));
 
-                // Buat file pengunci (.installed)
-                file_put_contents($lockFile, date('Y-m-d H:i:s'));
-
-                header("Location: install.php?step=success");
-                exit;
+                if ($w1 === false || $w2 === false || !file_exists($lockFile)) {
+                    $errors[] = "Gagal menulis file konfigurasi ke folder 'config/' karena terhalang izin kepemilikan Linux (Permission Denied).<br><br><strong>Cara Mengatasi:</strong> Jalankan perintah ini di Terminal VPS:<br><pre class='p-2 my-2 bg-dark rounded text-info'>chown -R www:www " . htmlspecialchars($baseDir) . "\nchmod -R 775 " . htmlspecialchars($baseDir . '/config') . "</pre>Setelah itu, klik tombol <strong>'Pasang & Selesaikan Instalasi'</strong> sekali lagi.";
+                } else {
+                    header("Location: install.php?step=success");
+                    exit;
+                }
 
             } catch (Throwable $e) {
                 $errors[] = "Gagal memproses instalasi: " . $e->getMessage();
