@@ -1,0 +1,10 @@
+# Environment & lock files
+config/.installed
+*.log
+.DS_Store
+
+# IDE & system
+.vscode/
+.idea/
+.fleet/
+Thumbs.db
