@@ -168,3 +168,4 @@ function applyPreset(label, port, proto, isLan = false) {
 </script>
 
 <?php require_once BASE_PATH . '/include/footer.php'; ?>
+

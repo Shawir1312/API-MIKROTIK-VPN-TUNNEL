@@ -1,6 +1,6 @@
 <?php
 /**
- * S.NET VPN Remote & Tunnel Gateway — Easy Web Installer
+ * VPN Tunnel & Remote RouterOS Gateway — Easy Web Installer
  * 
  * Skrip instalasi interaktif 100% Pure Full PHP:
  * - Pemeriksaan dependensi & ekstensi PHP
@@ -23,7 +23,7 @@ if (file_exists($lockFile)) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Instalasi Selesai — S.NET VPN Remote</title>
+        <title>Instalasi Selesai — VPN Tunnel & Remote RouterOS</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <style>
@@ -39,7 +39,7 @@ if (file_exists($lockFile)) {
                 </div>
                 <h3 class="fw-bold mb-2">Aplikasi Sudah Terpasang</h3>
                 <p class="text-secondary small mb-4">
-                    Sistem S.NET VPN Remote & Tunnel Gateway telah dikonfigurasi sebelumnya. File instalasi dikunci demi keamanan.
+                    Sistem VPN Tunnel & Remote RouterOS Gateway telah dikonfigurasi sebelumnya. File instalasi dikunci demi keamanan.
                 </p>
                 <div class="d-grid gap-2">
                     <a href="login.php" class="btn btn-primary btn-lg fw-semibold">
@@ -107,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $adminUser  = trim($_POST['admin_user'] ?? 'admin');
         $adminPass  = $_POST['admin_pass'] ?? '';
         $adminName  = trim($_POST['admin_name'] ?? 'Super Administrator');
-        $adminEmail = trim($_POST['admin_email'] ?? 'admin@snet.id');
+        $adminEmail = trim($_POST['admin_email'] ?? 'admin@vpn-tunnel.net');
 
         $serverName = trim($_POST['server_name'] ?? 'Master Gateway VPN');
         $publicIp   = trim($_POST['public_ip'] ?? '');
@@ -147,7 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     `server_name` VARCHAR(100) NOT NULL,
                     `public_ip` VARCHAR(50) NOT NULL,
                     `vpn_subnet` VARCHAR(50) DEFAULT '10.88.0.0/16',
-                    `vpn_interface` VARCHAR(50) DEFAULT 'wg-snet',
+                    `vpn_interface` VARCHAR(50) DEFAULT 'wg-tunnel',
                     `vpn_protocol` ENUM('wireguard', 'sstp', 'l2tp', 'all') DEFAULT 'wireguard',
                     `engine_type` ENUM('linux_iptables', 'mikrotik_chr') DEFAULT 'linux_iptables',
                     `chr_api_host` VARCHAR(50) DEFAULT NULL,
@@ -240,7 +240,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 // Simpan pengaturan aplikasi
                 $appSettings = [
-                    'app_name'           => 'S.NET VPN Remote & Tunnel Manager',
+                    'app_name'           => 'VPN Tunnel & Remote RouterOS',
                     'app_domain'         => $_SERVER['HTTP_HOST'] ?? 'localhost',
                     'default_server_ip'  => $publicIp,
                     'default_vpn_subnet' => $vpnSubnet,
@@ -256,7 +256,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 // Buat file konfigurasi database lokal (config/db_local.php)
                 $dbConfigContent = "<?php\n"
-                    . "// Dibuat otomatis oleh S.NET VPN Remote Installer pada " . date('Y-m-d H:i:s') . "\n"
+                    . "// Dibuat otomatis oleh VPN Tunnel Installer pada " . date('Y-m-d H:i:s') . "\n"
                     . "define('DB_HOST', " . var_export($dbHost, true) . ");\n"
                     . "define('DB_USER', " . var_export($dbUser, true) . ");\n"
                     . "define('DB_PASS', " . var_export($dbPass, true) . ");\n"
@@ -284,7 +284,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Installer — S.NET VPN Remote & Tunnel Gateway</title>
+    <title>Web Installer — VPN Tunnel & Remote RouterOS</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -384,7 +384,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="d-inline-flex align-items-center justify-content-center bg-white bg-opacity-25 rounded-circle p-3 mb-3 shadow">
             <i class="fa-solid fa-network-wired text-white fs-2"></i>
         </div>
-        <h2 class="fw-bold mb-1">S.NET VPN Remote & Tunnel Gateway</h2>
+        <h2 class="fw-bold mb-1">VPN Tunnel & Remote RouterOS Gateway</h2>
         <p class="mb-0 opacity-75 small">Instalasi Cepat Web-Based Full Pure PHP (DST-NAT Port Forwarding & Mikrotik API)</p>
     </div>
 
@@ -498,7 +498,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Nama Database (DB Name) *</label>
-                                <input type="text" name="db_name" id="db_name" class="form-control" value="snet_vpn" required>
+                                <input type="text" name="db_name" id="db_name" class="form-control" value="vpn_tunnel" required>
                                 <div class="form-text text-secondary small">Jika belum ada, installer akan membuatkannya secara otomatis.</div>
                             </div>
                             <div class="col-md-6">
@@ -579,7 +579,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Email Kontak *</label>
-                                <input type="email" name="admin_email" class="form-control" value="admin@snet.id" required>
+                                <input type="email" name="admin_email" class="form-control" value="admin@vpn-tunnel.net" required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Username Login Dashboard *</label>
@@ -608,7 +608,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <div class="p-3 bg-dark bg-opacity-75 text-center text-muted small border-top border-secondary border-opacity-25">
-        &copy; <?= date('Y') ?> S.NET Manager — High-Performance Mikrotik Remote & VPN Tunnel Engine (100% Pure PHP)
+        &copy; <?= date('Y') ?> VPN Tunnel Manager — High-Performance Mikrotik Remote & VPN Tunnel Engine (100% Pure PHP)
     </div>
 </div>
 
@@ -663,3 +663,4 @@ document.getElementById('btnTestDb')?.addEventListener('click', function() {
 </script>
 </body>
 </html>
+

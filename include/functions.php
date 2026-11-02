@@ -1,6 +1,6 @@
 <?php
 /**
- * S.NET VPN Remote — Global Utility Functions
+ * VPN Tunnel & Remote RouterOS — Global Utility Functions
  */
 
 if (!defined('IN_APP')) die('Direct access denied.');
@@ -97,3 +97,4 @@ function safe_shell_exec(string $cmd): ?string {
         return null;
     }
 }
+

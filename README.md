@@ -1,6 +1,6 @@
 # API-MIKROTIK-VPN-TUNNEL
 
-> **S.NET VPN Remote & Tunnel Gateway** — Aplikasi Web Management VPN Tunnel & Remote MikroTik berbasis **100% Full Pure PHP** dengan IP Publik dan DST-NAT Port Forwarding otomatis.
+> **MikroTik VPN Remote & Tunnel Gateway** — Aplikasi Web Management VPN Tunnel & Remote MikroTik berbasis **100% Full Pure PHP** dengan IP Publik dan DST-NAT Port Forwarding otomatis.
 
 ---
 
@@ -161,5 +161,6 @@ Agar sistem otomatis mengecek apakah router online/offline dan mendeteksi tunnel
 
 ## 🔒 Lisensi & Pengembang
 
-Dikembangkan oleh **S.NET TEAM** (Mushawir Odegoa).
+Dikembangkan oleh **Mushawir Odegoa** & Komunitas Open Source MikroTik.
 Dilisensikan di bawah lisensi MIT. Bebas digunakan untuk pengelolaan jaringan ISP, RT/RW Net, dan jaringan instansi/kantor.
+

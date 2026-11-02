@@ -1,6 +1,6 @@
 <?php
 /**
- * S.NET VPN Remote & Tunnel Gateway — NatManager
+ * VPN Tunnel & Remote RouterOS Gateway — NatManager
  * Pure PHP DST-NAT Port Forwarding Engine (Linux IPTables & Mikrotik CHR)
  */
 
@@ -59,7 +59,7 @@ class NatManager {
                 'to-ports'      => (string)$targetPort,
                 'protocol'      => $proto,
                 'dst-port'      => (string)$publicPort,
-                'comment'       => "SNET-NAT: " . $comment
+                'comment'       => "VPN-NAT: " . $comment
             ]);
         }
         $api->disconnect();
@@ -96,3 +96,4 @@ class NatManager {
         return false;
     }
 }
+

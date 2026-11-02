@@ -1,6 +1,6 @@
 <?php
 /**
- * S.NET VPN Remote & Tunnel Gateway — VpnManager
+ * VPN Tunnel & Remote RouterOS Gateway — VpnManager
  * 100% Full Pure PHP
  */
 
@@ -55,17 +55,17 @@ class VpnManager {
         $clientIp  = $tunnel['tunnel_ip'];
         $subnet    = $server['vpn_subnet'] ?? '10.88.0.0/16';
         $name      = preg_replace('/[^a-zA-Z0-9_-]/', '', $tunnel['client_name']);
-        $ifaceName = 'wg-snet-' . $name;
+        $ifaceName = 'wg-vpn-' . $name;
 
         return <<<SCRIPT
 # ====================================================================
-# S.NET VPN REMOTE — SCRIPT AUTO SETUP WIREGUARD (ROUTEROS v7)
+# MIKROTIK VPN REMOTE — SCRIPT AUTO SETUP WIREGUARD (ROUTEROS v7)
 # Klien: {$tunnel['client_name']} ({$clientIp})
 # ====================================================================
 
-/interface wireguard add name="{$ifaceName}" listen-port=13231 private-key="{$clientPriv}" comment="S.NET VPN Remote Tunnel"
-/interface wireguard peers add interface="{$ifaceName}" public-key="{$serverPub}" endpoint-address="{$serverIp}" endpoint-port={$serverPort} allowed-address={$subnet} persistent-keepalive=25s comment="S.NET Server Peer"
-/ip address add address={$clientIp}/16 interface="{$ifaceName}" comment="S.NET VPN IP"
+/interface wireguard add name="{$ifaceName}" listen-port=13231 private-key="{$clientPriv}" comment="VPN Remote Tunnel"
+/interface wireguard peers add interface="{$ifaceName}" public-key="{$serverPub}" endpoint-address="{$serverIp}" endpoint-port={$serverPort} allowed-address={$subnet} persistent-keepalive=25s comment="VPN Gateway Peer"
+/ip address add address={$clientIp}/16 interface="{$ifaceName}" comment="VPN Tunnel IP"
 
 # Pastikan service API RouterOS aktif untuk monitoring
 /ip service set api port=8728 disabled=no
@@ -81,16 +81,16 @@ SCRIPT;
         $user      = $tunnel['vpn_username'];
         $pass      = $tunnel['vpn_password'];
         $name      = preg_replace('/[^a-zA-Z0-9_-]/', '', $tunnel['client_name']);
-        $ifaceName = 'sstp-snet-' . $name;
+        $ifaceName = 'sstp-vpn-' . $name;
 
         return <<<SCRIPT
 # ====================================================================
-# S.NET VPN REMOTE — SCRIPT AUTO SETUP SSTP (ROUTEROS v6 & v7)
+# MIKROTIK VPN REMOTE — SCRIPT AUTO SETUP SSTP (ROUTEROS v6 & v7)
 # Klien: {$tunnel['client_name']} ({$tunnel['tunnel_ip']})
 # Port: {$port} TCP (Bypass Firewall / CGNAT)
 # ====================================================================
 
-/interface sstp-client add name="{$ifaceName}" connect-to="{$serverIp}" port={$port} user="{$user}" password="{$pass}" profile=default-encryption add-default-route=no disabled=no comment="S.NET VPN Remote Tunnel"
+/interface sstp-client add name="{$ifaceName}" connect-to="{$serverIp}" port={$port} user="{$user}" password="{$pass}" profile=default-encryption add-default-route=no disabled=no comment="VPN Remote Tunnel"
 
 # Pastikan service API RouterOS aktif untuk monitoring
 /ip service set api port=8728 disabled=no
@@ -105,18 +105,19 @@ SCRIPT;
         $user      = $tunnel['vpn_username'];
         $pass      = $tunnel['vpn_password'];
         $name      = preg_replace('/[^a-zA-Z0-9_-]/', '', $tunnel['client_name']);
-        $ifaceName = 'l2tp-snet-' . $name;
+        $ifaceName = 'l2tp-vpn-' . $name;
 
         return <<<SCRIPT
 # ====================================================================
-# S.NET VPN REMOTE — SCRIPT AUTO SETUP L2TP (ROUTEROS v6 & v7)
+# MIKROTIK VPN REMOTE — SCRIPT AUTO SETUP L2TP (ROUTEROS v6 & v7)
 # Klien: {$tunnel['client_name']} ({$tunnel['tunnel_ip']})
 # ====================================================================
 
-/interface l2tp-client add name="{$ifaceName}" connect-to="{$serverIp}" user="{$user}" password="{$pass}" add-default-route=no disabled=no comment="S.NET VPN Remote Tunnel"
+/interface l2tp-client add name="{$ifaceName}" connect-to="{$serverIp}" user="{$user}" password="{$pass}" add-default-route=no disabled=no comment="VPN Remote Tunnel"
 
 # Pastikan service API RouterOS aktif untuk monitoring
 /ip service set api port=8728 disabled=no
 SCRIPT;
     }
 }
+

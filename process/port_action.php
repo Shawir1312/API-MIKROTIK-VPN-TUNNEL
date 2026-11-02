@@ -1,6 +1,6 @@
 <?php
 /**
- * S.NET VPN TUNNEL & REMOTE ROUTEROS
+ * VPN Tunnel & Remote RouterOS Gateway
  * Process Controller: Port Action (DST-NAT Forwarding CRUD)
  */
 
@@ -154,3 +154,4 @@ switch ($action) {
         header("Location: ../index.php?page=ports");
         exit;
 }
+

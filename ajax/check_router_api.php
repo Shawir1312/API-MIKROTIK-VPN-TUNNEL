@@ -1,6 +1,6 @@
 <?php
 /**
- * S.NET VPN Remote & Tunnel Gateway
+ * VPN Tunnel & Remote RouterOS Gateway
  * AJAX: Check RouterOS API Connection over VPN Tunnel
  */
 
@@ -59,3 +59,4 @@ if ($api->connect($tunnelIp, $apiUser, $apiPass, $apiPort)) {
         'latency' => $latency
     ]);
 }
+

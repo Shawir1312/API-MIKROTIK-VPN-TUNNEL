@@ -1,6 +1,6 @@
 <?php
 /**
- * S.NET VPN Remote & Tunnel Gateway — Global App Config
+ * VPN Tunnel & Remote RouterOS Gateway — Global App Config
  */
 
 if (session_status() === PHP_SESSION_NONE) {
@@ -32,5 +32,6 @@ function get_app_setting(string $key, string $default = ''): string {
     return $cache[$key] ?? $default;
 }
 
-define('APP_NAME', get_app_setting('app_name', 'S.NET VPN Remote & Tunnel Gateway'));
+define('APP_NAME', get_app_setting('app_name', 'VPN Tunnel & Remote RouterOS'));
 define('APP_VERSION', '1.0.0');
+

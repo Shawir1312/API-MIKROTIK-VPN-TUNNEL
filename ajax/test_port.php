@@ -1,6 +1,6 @@
 <?php
 /**
- * S.NET VPN Remote & Tunnel Gateway
+ * VPN Tunnel & Remote RouterOS Gateway
  * AJAX: Test Forwarded Port Reachability (TCP Socket Test)
  */
 
@@ -30,3 +30,4 @@ if (!$port) {
 $res = NatManager::testPortReachability($port['public_ip'], (int)$port['public_port'], 3);
 
 echo json_encode($res);
+

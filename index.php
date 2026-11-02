@@ -1,6 +1,6 @@
 <?php
 /**
- * S.NET VPN Remote & Tunnel Gateway — Main App Router
+ * VPN Tunnel & Remote RouterOS Gateway — Main App Router
  */
 
 require_once __DIR__ . '/config/config.php';
@@ -48,3 +48,4 @@ switch ($page) {
         require_once __DIR__ . '/pages/dashboard.php';
         break;
 }
+

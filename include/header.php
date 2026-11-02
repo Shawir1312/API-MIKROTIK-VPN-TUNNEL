@@ -105,7 +105,7 @@ $user = current_user();
             <span class="d-inline-flex align-items-center justify-content-center bg-primary rounded-3 p-2 me-2 shadow-sm" style="width: 36px; height: 36px;">
                 <i class="fa-solid fa-network-wired text-white fs-6"></i>
             </span>
-            S.NET <span class="text-primary ms-1">TUNNEL</span>
+            VPN <span class="text-primary ms-1">TUNNEL</span>
         </a>
         <div class="d-flex align-items-center">
             <span class="badge bg-dark border border-secondary text-info me-3 d-none d-md-inline-block">
@@ -174,3 +174,4 @@ $user = current_user();
         <!-- Main Content Body -->
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
             <?php render_flash(); ?>
+

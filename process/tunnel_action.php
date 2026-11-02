@@ -1,6 +1,6 @@
 <?php
 /**
- * S.NET VPN Remote — Process Tunnel Actions
+ * VPN Tunnel & Remote RouterOS — Process Tunnel Actions
  */
 
 require_once dirname(__DIR__) . '/config/config.php';
@@ -101,3 +101,4 @@ if ($action === 'delete') {
 
 header("Location: ../index.php?page=tunnels");
 exit;
+

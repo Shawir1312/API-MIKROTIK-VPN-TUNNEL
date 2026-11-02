@@ -1,6 +1,6 @@
 <?php
 /**
- * S.NET VPN Remote & Tunnel Gateway — Database Connection
+ * VPN Tunnel & Remote RouterOS Gateway — Database Connection
  * 100% Full Pure PHP
  */
 
@@ -23,7 +23,7 @@ if (file_exists(__DIR__ . '/db_local.php')) {
 if (!defined('DB_HOST'))    define('DB_HOST',    getenv('DB_HOST')    ?: '127.0.0.1');
 if (!defined('DB_USER'))    define('DB_USER',    getenv('DB_USER')    ?: 'root');
 if (!defined('DB_PASS'))    define('DB_PASS',    getenv('DB_PASS')    ?: '');
-if (!defined('DB_NAME'))    define('DB_NAME',    getenv('DB_NAME')    ?: 'snet_vpn');
+if (!defined('DB_NAME'))    define('DB_NAME',    getenv('DB_NAME')    ?: 'vpn_tunnel');
 if (!defined('DB_PORT'))    define('DB_PORT',    (int)(getenv('DB_PORT') ?: 3306));
 if (!defined('DB_CHARSET')) define('DB_CHARSET', 'utf8mb4');
 
@@ -103,3 +103,4 @@ function db_execute(string $sql, string $types = '', array $params = []): int {
 function db_last_id(): int {
     return (int) db()->insert_id;
 }
+

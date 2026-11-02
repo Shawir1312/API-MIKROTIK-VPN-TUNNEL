@@ -1,6 +1,6 @@
 <?php
 /**
- * S.NET VPN Remote — Authentication & Session Manager
+ * VPN Tunnel & Remote RouterOS — Authentication & Session Manager
  */
 
 if (!defined('IN_APP')) die('Direct access denied.');
@@ -34,3 +34,4 @@ function auth_require_admin(): void {
              </div>");
     }
 }
+

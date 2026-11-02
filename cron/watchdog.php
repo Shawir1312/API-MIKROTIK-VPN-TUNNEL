@@ -1,6 +1,6 @@
 <?php
 /**
- * S.NET VPN Remote & Tunnel Gateway
+ * VPN Tunnel & Remote RouterOS Gateway
  * Background CLI Cron Watchdog: Ping Router Tunnels & Health Check
  * 
  * Pasang di crontab Linux / aaPanel:
@@ -17,7 +17,7 @@ require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../include/functions.php';
 
 echo "=====================================================\n";
-echo " S.NET VPN TUNNEL — Router Watchdog & Health Check\n";
+echo " MIKROTIK VPN TUNNEL — Router Watchdog & Health Check\n";
 echo " Waktu: " . date('Y-m-d H:i:s') . "\n";
 echo "=====================================================\n";
 
@@ -64,3 +64,4 @@ foreach ($expired as $exp) {
 
 echo "-----------------------------------------------------\n";
 echo " Selesai: {$onlineCount} Online, {$offlineCount} Offline.\n\n";
+

@@ -1,6 +1,6 @@
 <?php
 /**
- * S.NET VPN Remote — Login Page
+ * VPN Tunnel & Remote RouterOS — Login Page
  */
 
 require_once __DIR__ . '/config/config.php';
@@ -90,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="d-inline-flex align-items-center justify-content-center bg-white bg-opacity-25 rounded-circle p-3 mb-2 shadow">
             <i class="fa-solid fa-network-wired text-white fs-3"></i>
         </div>
-        <h3 class="fw-bold text-white mb-0">S.NET TUNNEL</h3>
+        <h3 class="fw-bold text-white mb-0">VPN TUNNEL</h3>
         <p class="opacity-75 small mb-0">Mikrotik Remote & DST-NAT Gateway</p>
     </div>
 
@@ -126,9 +126,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <div class="p-3 bg-dark bg-opacity-50 text-center text-muted small border-top border-secondary border-opacity-25">
-        &copy; <?= date('Y') ?> S.NET Manager (Full PHP 8.x)
+        &copy; <?= date('Y') ?> VPN Tunnel Manager (Full Pure PHP 8.x)
     </div>
 </div>
 
 </body>
 </html>
+

@@ -1,6 +1,6 @@
 <?php
 /**
- * S.NET VPN Remote & Tunnel Gateway
+ * VPN Tunnel & Remote RouterOS Gateway
  * Page: Router Live Monitoring (RouterOS API via Tunnel IP)
  */
 
@@ -231,3 +231,4 @@ function connectApi(e) {
 </script>
 
 <?php require_once BASE_PATH . '/include/footer.php'; ?>
+

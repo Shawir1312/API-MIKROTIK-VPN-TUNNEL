@@ -1,6 +1,6 @@
 <?php
 /**
- * S.NET VPN TUNNEL & REMOTE ROUTEROS
+ * VPN Tunnel & Remote RouterOS Gateway
  * Process Controller: Server Action (Gateway CRUD)
  */
 
@@ -67,3 +67,4 @@ switch ($action) {
         header("Location: ../index.php?page=servers");
         exit;
 }
+

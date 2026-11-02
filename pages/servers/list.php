@@ -1,6 +1,6 @@
 <?php
 /**
- * S.NET VPN Remote & Tunnel Gateway
+ * VPN Tunnel & Remote RouterOS Gateway
  * Page: Gateway Servers Management (Admin Only)
  */
 
@@ -198,3 +198,4 @@ function testGateway(id) {
 </script>
 
 <?php require_once BASE_PATH . '/include/footer.php'; ?>
+

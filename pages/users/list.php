@@ -1,6 +1,6 @@
 <?php
 /**
- * S.NET VPN Remote & Tunnel Gateway
+ * VPN Tunnel & Remote RouterOS Gateway
  * Page: Users Management (Admin Only)
  */
 
@@ -129,3 +129,4 @@ require_once BASE_PATH . '/include/header.php';
 </div>
 
 <?php require_once BASE_PATH . '/include/footer.php'; ?>
+
